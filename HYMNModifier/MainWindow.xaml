@@ -1,0 +1,53 @@
+﻿<Window x:Class="HYMNModifier.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HYMNModifier"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="536" Width="859.5">
+    <Canvas>
+        <TextBox Width="500" Canvas.Left="12" Canvas.Top="7"
+                 x:Name="UE_FileTextBox1"
+                 Text="{Binding path1, Mode=TwoWay, NotifyOnTargetUpdated=True}"></TextBox>
+        <Button Content="찾기" Canvas.Left="521" Canvas.Top="7"
+                Click="EH_fileopen1"></Button>
+        <TextBox Width="500" Canvas.Left="10" Canvas.Top="29"
+                 x:Name="UE_FileTextBox2"
+                 Text="{Binding path2, Mode=TwoWay, NotifyOnTargetUpdated=True}"></TextBox>
+        <Button Content="찾기" Canvas.Left="520" Canvas.Top="30"
+                Click="EH_fileopen2"></Button>
+        <Button Content="비교 시작" Canvas.Left="12" Canvas.Top="48"
+                Click="EH_StartButtonClick"></Button>
+        <Button Content="파일 재 추출" Canvas.Left="617" Canvas.Top="13" Height="42" Width="105"
+                Click="EH_ReGenerateButtonClick"></Button>
+        <Button Content="변경값 저장" Canvas.Left="743" Canvas.Top="13" Height="42" Width="105"
+                Click="EH_SaveButtonClick"></Button>
+
+        <ComboBox Width="100" Canvas.Left="330" Canvas.Top="67"
+                  ItemsSource="{Binding hymns}"
+                  SelectionChanged="EH_SelectionChanged"></ComboBox>
+        <Grid Canvas.Top="120" Canvas.Left="150">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition MinWidth="50"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition MinWidth="50"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Grid.Column="0"
+                MinWidth="200" MinHeight="300"
+                 Text="{Binding text1}" AcceptsReturn="True" AcceptsTab="True"></TextBox>
+            <TextBox Grid.Column="2"
+                MinWidth="200" MinHeight="300"
+                 Text="{Binding text2}" AcceptsReturn="True" AcceptsTab="True"></TextBox>
+            <TextBox Grid.Column="4"
+                MinWidth="200" MinHeight="300"
+                 Text="{Binding differentText}"></TextBox>
+        </Grid>
+
+        <Button Content="재비교" IsEnabled="False"
+                Click="EH_RecheckButtonClick" Canvas.Left="243" Canvas.Top="64" Height="40" Width="66"></Button>
+    </Canvas>
+</Window>
